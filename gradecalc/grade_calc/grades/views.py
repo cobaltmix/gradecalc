@@ -30,7 +30,7 @@ def calculate_exam_score(request):
             exam_weight_1 = data['semester_exam_weight_1']
             desired_grade = data['desired_grade']
             # Calculate the minimum semester exam score needed
-            semester_exam_score_needed = round((((desired_grade)-(quarter_1_grade * (quarter_1_weight/100))-(quarter_2_grade * (quarter_2_weight/100)))/(exam_weight_1/100)),4)
+            semester_exam_score_needed = round((((desired_grade)-(quarter_1_grade * (quarter_1_weight/100))-(quarter_2_grade * (quarter_2_weight/100)))/(exam_weight_1/100)),2)
             return render(request, 'grades/exam_score_calculator.html', {'form': form, 'semester_exam_score_needed': semester_exam_score_needed})
     else:
         form = DesireSemester()
