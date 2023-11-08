@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Calculator</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'grades/styles.css' %}">
+</head>
+<body>
+
+    <div class="calculator-header">
+        <h1 class="calculator-title">Grade Calculator</h1>
+        <button id="switchButton" class="button">Switch to Exam Calculator</button>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <label for="quarter_1_grade" class="quarter-label bigger-font">Quarter 1 Grade:</label>
+        <input type="number" id="quarter_1_grade" name="quarter_1_grade" class="quarter-grade" step="0.01" required>
+
+        <label for="quarter_1_weight" class="quarter-label bigger-font">Quarter 1 Weight:</label>
+        <input type="number" id="quarter_1_weight" name="quarter_1_weight" class="quarter-weight" step="0.01" required>
+
+        <label for="quarter_2_grade" class="quarter-label bigger-font">Quarter 2 Grade:</label>
+        <input type="number" id="quarter_2_grade" name="quarter_2_grade" class="quarter-grade" step="0.01" required>
+
+        <label for "quarter_2_weight" class="quarter-label bigger-font">Quarter 2 Weight:</label>
+        <input type="number" id="quarter_2_weight" name="quarter_2_weight" class="quarter-weight" step="0.01" required>
+
+        <label for="semester_exam_grade_1" class="quarter-label bigger-font">Semester Exam Grade 1:</label>
+        <input type="number" id="semester_exam_grade_1" name="semester_exam_grade_1" class="semester-exam-grade" step="0.01" required>
+
+        <label for="semester_exam_weight_1" class="quarter-label bigger-font">Semester Exam Weight 1:</label>
+        <input type="number" id="semester_exam_weight_1" name="semester_exam_weight_1" class="semester-exam-weight" step="0.01" required>
+
+        <input type="submit" value="Calculate Grade">
+    </form>
+    <div class="calc_text">
+        <h2>Semester Grade:</h2>
+    </div>
+    <div class="product">
+        <p>{{ final_grade }}</p>
+    </div>
+
+    <script>
+        document.getElementById("switchButton").addEventListener("click", function() {
+            window.location.href = "/calculate-exam";
+        });
+    </script>
+</body>
+</html>
